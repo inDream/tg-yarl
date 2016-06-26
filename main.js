@@ -246,4 +246,28 @@ Api.prototype.answerInlineQuery = function (queryId, results, options) {
   return yarl.post(this.url + 'answerInlineQuery', { body: options, json: true });
 };
 
+Api.prototype.answerCallbackQuery = function (queryId, options) {
+  options = this._setOptions({
+    callback_query_id: queryId
+  }, options);
+
+  return yarl.post(this.url + 'answerCallbackQuery', { body: options, json: true });
+};
+
+Api.prototype.editMessageText = function (text, options) {
+  options = this._setOptions({
+    text: text
+  }, options);
+
+  return yarl.post(this.url + 'editMessageText', { body: options, json: true });
+};
+
+Api.prototype.editMessageCaption = function (options) {
+  return yarl.post(this.url + 'editMessageCaption', { body: options, json: true });
+};
+
+Api.prototype.editMessageReplyMarkup = function (options) {
+  return yarl.post(this.url + 'editMessageReplyMarkup', { body: options, json: true });
+};
+
 module.exports = Api;
